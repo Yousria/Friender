@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Friender</string>
+    <string name="Nom">Nom</string>
+    <string name="Prenom">Prenom</string>
+</resources>
