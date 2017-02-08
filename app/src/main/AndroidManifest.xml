@@ -8,6 +8,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+        <uses-permission android:name="android.permission.INTERNET" />
+
+
         <activity android:name=".fcm.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +28,12 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.al1.friender.fcm.MyFirebaseMessagingService">
+        <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.example.al1.friender.fcm.MyFirebaseInstanceIDService">
+        <service android:name=".fcm.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -39,7 +44,7 @@
      See README(https://goo.gl/l4GJaQ) for more.
         -->
 
-            <meta-data
+        <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/frienderlogo" />
 
@@ -51,9 +56,18 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <uses-permission android:name="android.permission.INTERNET" />
 
-        <activity android:name=".fcm.ChoicesActivity"></activity>
+
+        <activity android:name=".fcm.ChoicesActivity" />
+
+        <activity
+            android:name=".fcm.ConnexionActivity"
+            android:label="@string/title_activity_connexion"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".fcm.InscriptionActivity"
+            android:label="@string/title_activity_inscription"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
