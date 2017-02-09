@@ -76,7 +76,7 @@ public class ConnexionActivity extends AppCompatActivity {
 
                     }
                 });
-        new Connexion().execute("10.0.2.2");
+        //new Connexion().execute("10.0.2.2");
         Intent intent = new Intent(this, ChoicesActivity.class);
         startActivity(intent);
 

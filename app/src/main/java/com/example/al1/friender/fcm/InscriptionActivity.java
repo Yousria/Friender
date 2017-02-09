@@ -1,5 +1,6 @@
 package com.example.al1.friender.fcm;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.al1.friender.R;
+import com.example.al1.friender.server.InsertUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,6 +29,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.concurrent.ExecutionException;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -37,22 +40,25 @@ public class InscriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        Button button = (Button) findViewById(R.id.Valider);
+        Button button = (Button) findViewById(R.id.valider);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logger();
-                //sendUserToServer();
+
             }
         });
     }
 
     public void logger(){
-        final EditText editText1 = (EditText) findViewById(R.id.email1);
-        final String email = editText1.getText().toString();
-        final EditText editText2 = (EditText) findViewById(R.id.mdp1);
-        final String mdp = editText2.getText().toString();
+        EditText editText1 = (EditText) findViewById(R.id.email1);
+        String email = editText1.getText().toString();
+        EditText editText2 = (EditText) findViewById(R.id.mdp1);
+        String mdp = editText2.getText().toString();
+        EditText editText3 = (EditText) findViewById(R.id.pseudo);
+        String pseudo = editText3.getText().toString();
         createUser(email, mdp, editText1, editText2);
+        new InsertUser().execute("10.0.2.2", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
         //Database.insertIntoUsers(email, "Yousria", FirebaseInstanceId.getInstance().getToken());
     }
 
@@ -93,30 +99,6 @@ public class InscriptionActivity extends AppCompatActivity {
         return valide;
     }
 
-    /*public void sendUserToServer(){
-        EditText editText1 = (EditText) findViewById(R.id.pseudo);
-        String pseudo = editText1.getText().toString();
-        EditText editText2 = (EditText) findViewById(R.id.email1);
-        String email = editText2.getText().toString();
-        EditText editText3 = (EditText) findViewById(R.id.mdp1);
-        String mdp = editText3.getText().toString();
-        Connexion conn = new Connexion();
-        JSONObject json = new JSONObject();
-        try {
-            json.put("pseudo", pseudo);
-            json.put("email", email);
-            json.put("mdp", mdp);
-            json.put("token", FirebaseInstanceId.getInstance().getToken());
-            conn.execute("10.0.2.2");
-            conn.socket = new Socket(InetAddress.getByName("10.0.2.2"), 8080);
-            OutputStreamWriter out = new OutputStreamWriter(conn.socket.getOutputStream());
-            out.write(json.toString());
-            out.flush();
-            out.close();
-            conn.socket.close();
-        }catch(JSONException | IOException e){
-            e.printStackTrace();
-        }
-    }*/
+
 
 }
