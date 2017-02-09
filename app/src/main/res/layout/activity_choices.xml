@@ -23,32 +23,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cinéma"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:id="@+id/cinema"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Restaurant"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:id="@+id/resto"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Boite de nuit"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:id="@+id/boite"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Théatre"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:id="@+id/theatre"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Footing"
-        android:textSize="30dp"/>
+        android:textSize="30dp"
+        android:id="@+id/footing"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salle de sport"
-        android:textSize="30dp"/></LinearLayout>
+        android:textSize="30dp"
+        android:id="@+id/sport"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valider"
+        android:id="@+id/validerChoix"/>
+    </LinearLayout>
 
 </LinearLayout>

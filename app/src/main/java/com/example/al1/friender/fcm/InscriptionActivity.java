@@ -1,5 +1,7 @@
 package com.example.al1.friender.fcm;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -58,7 +60,13 @@ public class InscriptionActivity extends AppCompatActivity {
         EditText editText3 = (EditText) findViewById(R.id.pseudo);
         String pseudo = editText3.getText().toString();
         createUser(email, mdp, editText1, editText2);
-        new InsertUser().execute("10.0.2.2", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
+        new InsertUser(InscriptionActivity.this).execute("10.0.2.2", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
+        SharedPreferences user = getSharedPreferences("MyId", 0);
+        SharedPreferences.Editor editor = user.edit();
+        editor.putString("pseudo", pseudo);
+        editor.apply();
+        System.out.println(user.getString("pseudo", "p"));
+        authUser(email, mdp);
         //Database.insertIntoUsers(email, "Yousria", FirebaseInstanceId.getInstance().getToken());
     }
 
@@ -97,6 +105,26 @@ public class InscriptionActivity extends AppCompatActivity {
             t2.setError(null);
         }
         return valide;
+    }
+
+    public void authUser(String email, String mdp){
+
+        //connexion
+        MainActivity.mAuth.signInWithEmailAndPassword(email, mdp)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        if(!task.isSuccessful()){
+                            Toast.makeText(InscriptionActivity.this, "FAILED AUTH", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+        Intent intent = new Intent(this, ChoicesActivity.class);
+        startActivity(intent);
+
     }
 
 
