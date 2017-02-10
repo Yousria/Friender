@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 
 import com.example.al1.friender.R;
 import com.example.al1.friender.server.InsertPref;
+import com.example.al1.friender.server.SendRequetMatch;
 
 /**
  * Created by yous on 07/02/2017.
@@ -33,6 +34,7 @@ public class ChoicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 verifyCheck();
+
             }
         });
 
@@ -80,6 +82,7 @@ public class ChoicesActivity extends AppCompatActivity {
         SharedPreferences user = getSharedPreferences("MyId", 0);
         String pseudo = user.getString("pseudo", "ps");
         new InsertPref(ChoicesActivity.this).execute(pseudo, resto, sport, cinema, theatre, footing, boite);
+        new SendRequetMatch().execute(resto, footing, theatre, boite, cinema, sport, pseudo);
 
     }
 }
