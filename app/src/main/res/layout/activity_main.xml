@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#0095C3"
     tools:context="com.example.al1.friender.fcm.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Bienvenue dans Friender\n\n"/>
+        android:text="Bienvenue dans Friender\n\n"
+        android:id="@+id/textView" />
 
     <LinearLayout
         android:layout_width="wrap_content"

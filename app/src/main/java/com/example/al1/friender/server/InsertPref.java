@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.mysql.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,9 +27,12 @@ public class InsertPref extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
+        Driver d;
         try {
+            d = new com.mysql.jdbc.Driver();
+            DriverManager.registerDriver(d);
             Connection conn = null;
-            String url = "jdbc:mysql://10.0.2.2:3306/frienderdata";
+            String url = "jdbc:mysql://192.168.56.1:3306/frienderdata";
             String user = "root";
             String passwd = "esgi2017";
             conn = DriverManager.getConnection(url, user, passwd);

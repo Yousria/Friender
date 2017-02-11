@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.al1.friender.fcm.ConnexionActivity"
     android:orientation="vertical"
+    android:background="#0095C3"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:gravity="center_vertical">
 
     <LinearLayout
@@ -18,6 +21,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:id="@+id/email2"/></LinearLayout>
 
     <LinearLayout
@@ -33,6 +37,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:id="@+id/mdp2"/>
     </LinearLayout>
 

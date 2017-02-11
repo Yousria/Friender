@@ -1,5 +1,6 @@
 package com.example.al1.friender.fcm;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.example.al1.friender.R;
+import com.example.al1.friender.googlePlaces.GooglePlacesActivity;
 import com.example.al1.friender.server.InsertPref;
 import com.example.al1.friender.server.SendRequetMatch;
 
@@ -34,7 +36,7 @@ public class ChoicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 verifyCheck();
-
+                nextActivity();
             }
         });
 
@@ -84,5 +86,10 @@ public class ChoicesActivity extends AppCompatActivity {
         new InsertPref(ChoicesActivity.this).execute(pseudo, resto, sport, cinema, theatre, footing, boite);
         new SendRequetMatch().execute(resto, footing, theatre, boite, cinema, sport, pseudo);
 
+    }
+
+    public void nextActivity(){
+        Intent intent = new Intent(this, GooglePlacesActivity.class);
+        startActivity(intent);
     }
 }

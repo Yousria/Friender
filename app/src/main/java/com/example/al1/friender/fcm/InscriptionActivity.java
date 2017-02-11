@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.al1.friender.R;
 import com.example.al1.friender.server.InsertUser;
+import com.example.al1.friender.server.PseudoExists;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -59,20 +60,22 @@ public class InscriptionActivity extends AppCompatActivity {
         String mdp = editText2.getText().toString();
         EditText editText3 = (EditText) findViewById(R.id.pseudo);
         String pseudo = editText3.getText().toString();
-        createUser(email, mdp, editText1, editText2);
-        new InsertUser(InscriptionActivity.this).execute("10.0.2.2", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
-        SharedPreferences user = getSharedPreferences("MyId", 0);
-        SharedPreferences.Editor editor = user.edit();
-        editor.putString("pseudo", pseudo);
-        editor.apply();
-        System.out.println(user.getString("pseudo", "p"));
-        authUser(email, mdp);
+        if(createUser(email, mdp, pseudo, editText1, editText2, editText3)){
+            new InsertUser(InscriptionActivity.this).execute("192.168.56.1", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
+            SharedPreferences user = getSharedPreferences("MyId", 0);
+            SharedPreferences.Editor editor = user.edit();
+            editor.putString("pseudo", pseudo);
+            editor.apply();
+            System.out.println(user.getString("pseudo", "p"));
+            authUser(email, mdp);
+        }
+
         //Database.insertIntoUsers(email, "Yousria", FirebaseInstanceId.getInstance().getToken());
     }
 
-    public void createUser(String email, String mdp, EditText t1, EditText t2){
+    public boolean createUser(String email, String mdp, String pseudo, EditText t1, EditText t2, EditText t3){
 
-        if(isValide(email, mdp, t1, t2)) {
+        if(isValide(email, mdp, pseudo, t1, t2, t3)) {
             MainActivity.mAuth.createUserWithEmailAndPassword(email, mdp).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -85,12 +88,30 @@ public class InscriptionActivity extends AppCompatActivity {
                     }
                 }
             });
+        }else{
+            return false;
         }
+        return true;
     }
 
-    public boolean isValide(String email, String password, EditText t1, EditText t2){
+    public boolean isValide(String email, String password, String pseudo, EditText t1, EditText t2, EditText t3) {
         boolean valide = true;
-
+        try {
+            if (TextUtils.isEmpty(pseudo)) {
+                t3.setError("Required!");
+                valide = false;
+            } else {
+                boolean exists = new PseudoExists().execute(pseudo).get();
+                if (exists) {
+                    t3.setError("Already exists !!");
+                    valide = false;
+                } else {
+                    t3.setError(null);
+                }
+            }
+        }catch(InterruptedException | ExecutionException e){
+            e.printStackTrace();
+        }
         if(TextUtils.isEmpty(email)){
             t1.setError("Required!");
             valide = false;

@@ -31,7 +31,7 @@ public class SendRequetMatch extends AsyncTask <String, Void, ArrayList<String>>
 
         try {
             Connection conn = null;
-            String url = "jdbc:mysql://10.0.2.2:3306/frienderdata";
+            String url = "jdbc:mysql://192.168.56.1:3306/frienderdata";
             String user = "root";
             String passwd = "esgi2017";
             conn = DriverManager.getConnection(url, user, passwd);

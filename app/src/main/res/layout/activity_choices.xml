@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_choices"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#0095C3"
     tools:context="com.example.al1.friender.fcm.ChoicesActivity">
 
     <TextView
@@ -24,43 +26,50 @@
         android:layout_height="wrap_content"
         android:text="Cinéma"
         android:textSize="30dp"
-        android:id="@+id/cinema"/>
+        android:id="@+id/cinema"
+        android:buttonTint="#000000"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Restaurant"
         android:textSize="30dp"
-        android:id="@+id/resto"/>
+        android:id="@+id/resto"
+        android:buttonTint="#000000"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Boite de nuit"
         android:textSize="30dp"
-        android:id="@+id/boite"/>
+        android:id="@+id/boite"
+        android:buttonTint="#000000"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Théatre"
         android:textSize="30dp"
-        android:id="@+id/theatre"/>
+        android:id="@+id/theatre"
+        android:buttonTint="#000000" />
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Footing"
         android:textSize="30dp"
-        android:id="@+id/footing"/>
+        android:id="@+id/footing"
+        android:buttonTint="#000000"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salle de sport"
         android:textSize="30dp"
-        android:id="@+id/sport"/>
+        android:id="@+id/sport"
+        android:buttonTint="#000000"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Valider"
-        android:id="@+id/validerChoix"/>
+        android:id="@+id/validerChoix"
+        android:buttonTint="#000000"/>
     </LinearLayout>
 
 </LinearLayout>
