@@ -3,19 +3,19 @@
     package="com.example.al1.friender">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
         <activity android:name=".fcm.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +52,7 @@
             android:resource="@drawable/frienderlogo" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB2OlMC57DnXpQJpDLIPnQcVZVEeqT49QA"/>
+            android:value="AIzaSyB2OlMC57DnXpQJpDLIPnQcVZVEeqT49QA" />
 
         <!--
              Set color used with incoming notification messages. This is used when no color is set for the incoming
@@ -75,6 +75,10 @@
             android:name=".googlePlaces.GooglePlacesActivity"
             android:label="@string/title_activity_google_places"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".fcm.MatchActivity"
+            android:label="@string/title_activity_match"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

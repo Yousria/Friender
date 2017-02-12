@@ -32,8 +32,8 @@ public class InsertPref extends AsyncTask<String, Void, String> {
             d = new com.mysql.jdbc.Driver();
             DriverManager.registerDriver(d);
             Connection conn = null;
-            String url = "jdbc:mysql://192.168.56.1:3306/frienderdata";
-            String user = "root";
+            String url = "jdbc:mysql://192.168.1.12:3306/frienderdata";
+            String user = "esgi";
             String passwd = "esgi2017";
             conn = DriverManager.getConnection(url, user, passwd);
             String query1 = "SELECT pseudo FROM pref WHERE pseudo='"+params[0]+"'";

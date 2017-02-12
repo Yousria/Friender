@@ -25,7 +25,7 @@ public class DBUtils extends AsyncTask<String, Void, Connection>{
             d = new com.mysql.jdbc.Driver();
             DriverManager.registerDriver(d);
             String url = "jdbc:mysql://"+params[0]+":3306/frienderdata";
-            String user = "root";
+            String user = "esgi";
             String passwd = "esgi2017";
             conn = (Connection) DriverManager.getConnection(url, user, passwd);
             System.out.println("Connexion effective !");

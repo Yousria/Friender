@@ -30,7 +30,7 @@ public class InsertUser extends AsyncTask<String, Void, String> {
         try {
             Connection conn = null;
             String url = "jdbc:mysql://" + params[0] + ":3306/frienderdata";
-            String user = "root";
+            String user = "esgi";
             String passwd = "esgi2017";
             conn = DriverManager.getConnection(url, user, passwd);
             String query1 = "SELECT id FROM users WHERE token='"+params[4]+"'";

@@ -5,14 +5,19 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 
 import com.example.al1.friender.R;
 import com.example.al1.friender.googlePlaces.GooglePlacesActivity;
 import com.example.al1.friender.server.InsertPref;
 import com.example.al1.friender.server.SendRequetMatch;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by yous on 07/02/2017.
@@ -36,7 +41,6 @@ public class ChoicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 verifyCheck();
-                nextActivity();
             }
         });
 
@@ -84,12 +88,18 @@ public class ChoicesActivity extends AppCompatActivity {
         SharedPreferences user = getSharedPreferences("MyId", 0);
         String pseudo = user.getString("pseudo", "ps");
         new InsertPref(ChoicesActivity.this).execute(pseudo, resto, sport, cinema, theatre, footing, boite);
-        new SendRequetMatch().execute(resto, footing, theatre, boite, cinema, sport, pseudo);
+        try {
+            ArrayList<String> matchs = new SendRequetMatch().execute(resto, footing, theatre, boite, cinema, sport, pseudo).get();
+            Intent intent = new Intent(this, MatchActivity.class);
+            intent.putStringArrayListExtra("match", matchs);
+            startActivity(intent);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void nextActivity(){
-        Intent intent = new Intent(this, GooglePlacesActivity.class);
-        startActivity(intent);
-    }
+
 }

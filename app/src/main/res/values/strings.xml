@@ -8,4 +8,5 @@
     <string name="title_activity_connexion">ConnexionActivity</string>
     <string name="title_activity_inscription">InscriptionActivity</string>
     <string name="title_activity_google_places">GooglePlacesActivity</string>
+    <string name="title_activity_match">MatchActivity</string>
 </resources>

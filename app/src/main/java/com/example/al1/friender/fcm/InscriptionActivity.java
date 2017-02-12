@@ -61,7 +61,7 @@ public class InscriptionActivity extends AppCompatActivity {
         EditText editText3 = (EditText) findViewById(R.id.pseudo);
         String pseudo = editText3.getText().toString();
         if(createUser(email, mdp, pseudo, editText1, editText2, editText3)){
-            new InsertUser(InscriptionActivity.this).execute("192.168.56.1", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
+            new InsertUser(InscriptionActivity.this).execute("192.168.1.12", pseudo, email, mdp, FirebaseInstanceId.getInstance().getToken());
             SharedPreferences user = getSharedPreferences("MyId", 0);
             SharedPreferences.Editor editor = user.edit();
             editor.putString("pseudo", pseudo);
