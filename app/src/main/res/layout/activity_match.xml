@@ -19,6 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_match"></ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:id="@+id/fragment_container"></LinearLayout>
 
 
 </LinearLayout>

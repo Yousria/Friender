@@ -28,6 +28,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/json_simple-1.1.jar')
+
+
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.google.firebase:firebase-auth:10.0.1'
@@ -37,8 +39,6 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'mysql:mysql-connector-java:5.1.29'
     compile 'com.google.android.gms:play-services-places:10.0.1'
-
     testCompile 'junit:junit:4.12'
-
 }
 apply plugin: 'com.google.gms.google-services'
