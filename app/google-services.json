@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1041325291900",
+    "firebase_url": "https://friender-123456.firebaseio.com",
+    "project_id": "friender-123456",
+    "storage_bucket": "friender-123456.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041325291900:android:be12ef2da8a6919e",
+        "android_client_info": {
+          "package_name": "com.example.al1.friender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041325291900-m2bgij2hul42lsqid6qgdgdvg5oeqh2h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.al1.friender",
+            "certificate_hash": "0F52501B83101A76D6E0CDE477AB3802716F513C"
+          }
+        },
+        {
+          "client_id": "1041325291900-s8icf7bp6jlmd9su23tgi9gn9nfvst0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC97DFGhzcug3W4db7WVPAacP0YdLnkZS4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041325291900-s8icf7bp6jlmd9su23tgi9gn9nfvst0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
